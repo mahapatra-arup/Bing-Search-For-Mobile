@@ -9,7 +9,7 @@ var desktopArray = {
     title: "desktop",
     width: 0,
     height: 0,
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
     userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/604.1 Edg/109.0.100.0",
     touch: false,
     mobile: false
@@ -33,11 +33,11 @@ phonesArray.forEach(function (phone) {
 })
 
 // Wait time between searches
-let milliseconds = 1401
+let milliseconds = 1201
 
 // Default value
-let numberOfSearches = 45
-let numberOfSearchesMobile = 50
+let numberOfSearches = 40
+let numberOfSearchesMobile = 45
 
 // Dom Elements for jQuery purpose
 const domElements = {

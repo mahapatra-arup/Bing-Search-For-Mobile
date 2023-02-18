@@ -18,7 +18,7 @@ var desktopArray = {
 // Phones for mobile searches
 var phonesArray = [{
     title: "Google Nexus 4",
-    width: 340,
+    width: 380,
     height: 320,
     deviceScaleFactor: 1,
     userAgent: "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 EdgA/42.0.0.2057",
@@ -33,7 +33,7 @@ phonesArray.forEach(function (phone) {
 })
 
 // Wait time between searches
-let milliseconds = 1501
+let milliseconds = 1401
 
 // Default value
 let numberOfSearches = 39
@@ -83,7 +83,7 @@ $(domElements.totSearchesMobileNumber).html(numberOfSearchesMobile)
 
 // When change the value inside the input
 $(domElements.totSearchesForm).on('change', function () {
-    numberOfSearches =parseInt($(domElements.totSearchesForm).val())
+    numberOfSearches = parseInt($(domElements.totSearchesForm).val())
     $(domElements.totSearchesNumber).html(numberOfSearches)
 
 })
@@ -98,19 +98,20 @@ $(domElements.totSearchesMobileForm).on('change', function () {
 
 //All  pc & mobile both Search
 $(domElements.allButton).on('click', async () => {
-    
+    await timer(1000)
     let tabId = await getTabId()
-    await timer(1000)
     //pc search
-    handleMobileMode(tabId)
     await timer(1000)
-    
+    handleDesktopMode(tabId)
+
+
     //sleep (numberOfSearches*2)=because 2ms increase per serarch time   and 4000= for wait next mobile search
-    await timer((milliseconds * numberOfSearches)+6000) //Wait for complete desktopmode Saerch
+    await timer((milliseconds * numberOfSearches) + 5000) //Wait for complete desktopmode Saerch
+
 
     //mobile search
     let tabId1 = await getTabId()
-    handleDesktopMode(tabId1)
+    handleMobileMode(tabId)
 })
 
 // Start search desktop
@@ -143,7 +144,7 @@ async function doSearchesDesktop() {
         setProgress(parseInt(((i + 1) / numberOfSearches) * 100), 'desktop')
 
         $(domElements.currentSearchNumber).html(i + 1)
-        await timer(milliseconds ) //Increase 2 mili second
+        await timer(milliseconds) //Increase 2 mili second
     }
 
     openAndreaCorriga()
@@ -278,7 +279,7 @@ function handleDesktopMode(tabId) {
             tabId: tabId
         }, "Page.setDeviceMetricsOverride", {
             width: desktopArray.width,
-            height:desktopArray.height,
+            height: desktopArray.height,
             deviceScaleFactor: desktopArray.deviceScaleFactor,
             mobile: desktopArray.mobile,
             fitWindow: true

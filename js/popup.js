@@ -7,8 +7,8 @@ let andreaCorrigaWebsite = 'https://bing.com'
 // Desktop object
 var desktopArray = {
     title: "pc",
-    width: 820,
-    height: 1180,
+    width: 0,
+    height: 0,
     deviceScaleFactor: 1,
     userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/604.1 Edg/109.0.100.0",
     touch: false,
@@ -20,7 +20,7 @@ var phonesArray = [{
     title: "Google Nexus 4",
     width: 380,
     height: 320,
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
     userAgent: "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 EdgA/42.0.0.2057",
     touch: true,
     mobile: true
@@ -106,7 +106,7 @@ $(domElements.allButton).on('click', async () => {
 
 
     //sleep (numberOfSearches*2)=because 2ms increase per serarch time   and 4000= for wait next mobile search
-    await timer((milliseconds * numberOfSearches) + 5000) //Wait for complete desktopmode Saerch
+    await timer((milliseconds * numberOfSearches) + 3000) //Wait for complete desktopmode Saerch
 
 
     //mobile search

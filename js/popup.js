@@ -6,10 +6,10 @@ let andreaCorrigaWebsite = 'https://bing.com'
 
 // Desktop object
 var desktopArray = {
-    title: "pc",
+    title: "desktop",
     width: 0,
     height: 0,
-    deviceScaleFactor: 1,
+    deviceScaleFactor: 2,
     userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/604.1 Edg/109.0.100.0",
     touch: false,
     mobile: false
@@ -18,10 +18,10 @@ var desktopArray = {
 // Phones for mobile searches
 var phonesArray = [{
     title: "Google Nexus 4",
-    width: 380,
-    height: 320,
+    width: 0,
+    height: 0,
     deviceScaleFactor: 2,
-    userAgent: "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 EdgA/42.0.0.2057",
+    userAgent: "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.1+ (KHTML, like Gecko) Version/10.0.0.1337 Mobile Safari/537.1+",
     touch: true,
     mobile: true
 }]
@@ -33,11 +33,11 @@ phonesArray.forEach(function (phone) {
 })
 
 // Wait time between searches
-let milliseconds = 1401
+var milliseconds = 1401
 
 // Default value
-let numberOfSearches = 39
-let numberOfSearchesMobile = 43
+var numberOfSearches = 40
+var numberOfSearchesMobile = 45
 
 // Dom Elements for jQuery purpose
 const domElements = {
@@ -98,20 +98,17 @@ $(domElements.totSearchesMobileForm).on('change', function () {
 
 //All  pc & mobile both Search
 $(domElements.allButton).on('click', async () => {
-    await timer(1000)
-    let tabId = await getTabId()
     //pc search
-    await timer(1000)
+    let tabId = await getTabId()
     handleDesktopMode(tabId)
 
-
-    //sleep (numberOfSearches*2)=because 2ms increase per serarch time   and 4000= for wait next mobile search
-    await timer((milliseconds * numberOfSearches) + 3000) //Wait for complete desktopmode Saerch
-
+    //sleep (numberOfSearches*2)=because 2ms per serarch time  increase and 4000= for wait next mobile search
+    let waittimefordesktop = (milliseconds * numberOfSearches) + 4000 + (numberOfSearches * 2)
+    await timer(waittimefordesktop) //Wait for complete desktopmode Saerch
 
     //mobile search
     let tabId1 = await getTabId()
-    handleMobileMode(tabId)
+    handleMobileMode(tabId1)
 })
 
 // Start search desktop
@@ -144,7 +141,7 @@ async function doSearchesDesktop() {
         setProgress(parseInt(((i + 1) / numberOfSearches) * 100), 'desktop')
 
         $(domElements.currentSearchNumber).html(i + 1)
-        await timer(milliseconds) //Increase 2 mili second
+        await timer(milliseconds+2) //Increase 2 mili second
     }
 
     openAndreaCorriga()
@@ -171,7 +168,7 @@ async function doSearchesMobile() {
         setProgress(parseInt(((i + 1) / numberOfSearchesMobile) * 100), 'mobile')
 
         $(domElements.currentSearchMobileNumber).html(i + 1)
-        await timer(milliseconds)//Increase 2 mili second
+        await timer(milliseconds+2)//Increase 2 mili second
     }
 
     setProgress(0, 'mobile')

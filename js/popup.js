@@ -100,16 +100,17 @@ $(domElements.totSearchesMobileForm).on('change', function () {
 $(domElements.allButton).on('click', async () => {
     
     let tabId = await getTabId()
-
+    await timer(1000)
     //pc search
     handleMobileMode(tabId)
-
+    await timer(1000)
+    
     //sleep (numberOfSearches*2)=because 2ms increase per serarch time   and 4000= for wait next mobile search
-    await timer(4000+(milliseconds * numberOfSearches) + (numberOfSearches * 2)) //Wait for complete desktopmode Saerch
+    await timer((milliseconds * numberOfSearches)+6000) //Wait for complete desktopmode Saerch
 
     //mobile search
-    //let tabId1 = await getTabId()
-    handleDesktopMode(tabId)
+    let tabId1 = await getTabId()
+    handleDesktopMode(tabId1)
 })
 
 // Start search desktop
@@ -142,7 +143,7 @@ async function doSearchesDesktop() {
         setProgress(parseInt(((i + 1) / numberOfSearches) * 100), 'desktop')
 
         $(domElements.currentSearchNumber).html(i + 1)
-        await timer(milliseconds + 2) //Increase 2 mili second
+        await timer(milliseconds ) //Increase 2 mili second
     }
 
     openAndreaCorriga()
@@ -169,7 +170,7 @@ async function doSearchesMobile() {
         setProgress(parseInt(((i + 1) / numberOfSearchesMobile) * 100), 'mobile')
 
         $(domElements.currentSearchMobileNumber).html(i + 1)
-        await timer(milliseconds + 2)//Increase 2 mili second
+        await timer(milliseconds)//Increase 2 mili second
     }
 
     setProgress(0, 'mobile')

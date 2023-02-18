@@ -18,9 +18,9 @@ var desktopArray = {
 // Phones for mobile searches
 var phonesArray = [{
     title: "Google Nexus 4",
-    width: 0,
-    height: 0,
-    deviceScaleFactor: 2,
+    width: 340,
+    height: 320,
+    deviceScaleFactor: 1,
     userAgent: "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 EdgA/42.0.0.2057",
     touch: true,
     mobile: true

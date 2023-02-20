@@ -9,8 +9,8 @@ var desktopArray = {
     title: "desktop",
     width: 0,
     height: 0,
-    deviceScaleFactor: 2,
-    userAgent: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/605.1.15 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/604.1 Edg/109.0.100.0",
+    deviceScaleFactor: 1,
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
     touch: false,
     mobile: false
 }
@@ -21,7 +21,7 @@ var phonesArray = [{
     width: 0,
     height: 0,
     deviceScaleFactor: 2,
-    userAgent: "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.1+ (KHTML, like Gecko) Version/10.0.0.1337 Mobile Safari/537.1+",
+    userAgent: "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1 EdgA/42.0.0.2057",
     touch: true,
     mobile: true
 }]
@@ -33,11 +33,11 @@ phonesArray.forEach(function (phone) {
 })
 
 // Wait time between searches
-var milliseconds = 1401
+var milliseconds = 1300
 
 // Default value
-var numberOfSearches = 40
-var numberOfSearchesMobile = 45
+var numberOfSearches = 35
+var numberOfSearchesMobile = 40
 
 // Dom Elements for jQuery purpose
 const domElements = {
